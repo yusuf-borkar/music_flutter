@@ -127,7 +127,7 @@ class SignupScreen extends StatelessWidget
                         {
                           displayToastMessage("Name must be at least 3 Characters", context);
                         }
-                        else if(!emailTextEditingController.text.contains("@"))
+                        else if(!emailTextEditingController.text.contains(RegExp("[a-z0-9!#%&'*+/=?^_`{|}~.-]+@[a-z0-9-]+(\.[a-z0-9-]+)*")))
                         {
                           displayToastMessage("Email address is not Valid", context);
                         }
@@ -150,29 +150,29 @@ class SignupScreen extends StatelessWidget
                         ),
                       ),
                     ),
+
+                    SizedBox(height: 10.0,),
+
+                    TextButton(onPressed: (){
+                      Navigator.pushNamedAndRemoveUntil(context, LoginScreen.idScreen, (route) => false);
+                    },
+                      style: TextButton.styleFrom(
+                        shadowColor: Colors.black,
+                        primary: Colors.red,
+                        textStyle: TextStyle(
+                          fontSize: 15.0,
+                        ),
+                      ),
+                      child: Align(
+                        alignment: Alignment.bottomLeft,
+                        child: Text(
+                          "Already, Have an Account? Sign In."
+                          ,),
+                      )
+                      ,)
                   ],
                 ),
               ),
-
-              SizedBox(height: 15.0),
-
-              ElevatedButton(
-                onPressed: (){
-                  Navigator.pushNamedAndRemoveUntil(context, LoginScreen.idScreen, (route) => false);
-                },
-                style: ElevatedButton.styleFrom(
-                  shadowColor: Colors.black,
-                  primary: Colors.black,
-                  onPrimary: Colors.red,
-                  textStyle: TextStyle(
-                    fontSize: 15.0,
-                  ),
-                ),
-                child: Text(
-                  "Already, Have an Account? SignIn here.",
-                ),
-              ),
-
             ],
           ),
         ),

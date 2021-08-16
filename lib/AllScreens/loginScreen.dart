@@ -1,6 +1,7 @@
 import 'dart:ui';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:music_app/AllScreens/signupScreen.dart';
 import 'package:music_app/AllWidgets/progressDialog.dart';
@@ -99,7 +100,7 @@ class LoginScreen extends StatelessWidget
 
                       onPressed: ()
                       {
-                        if(!emailTextEditingController.text.contains("@"))
+                        if(!emailTextEditingController.text.contains(RegExp("[a-z0-9!#%&'*+/=?^_`{|}~.-]+@[a-z0-9-]+(\.[a-z0-9-]+)*")))
                         {
                           displayToastMessage("Email address is not Valid", context);
                         }
@@ -122,29 +123,28 @@ class LoginScreen extends StatelessWidget
                       ),
                     ),
 
+                    SizedBox(height: 10.0,),
+
+                    TextButton(onPressed: (){
+                      Navigator.pushNamedAndRemoveUntil(context, SignupScreen.idScreen, (route) => false);
+                    },
+                      style: TextButton.styleFrom(
+                        shadowColor: Colors.black,
+                        primary: Colors.red,
+                        textStyle: TextStyle(
+                          fontSize: 15.0,
+                        ),
+                      ),
+                      child: Align(
+                        alignment: Alignment.bottomLeft,
+                        child: Text(
+                          "Don't, Have an Account? Sign up."
+                          ,),
+                      )
+                      ,)
                   ],
                 ),
               ),
-
-              SizedBox(height: 15.0),
-
-              ElevatedButton(
-                onPressed: (){
-                  Navigator.pushNamedAndRemoveUntil(context, SignupScreen.idScreen, (route) => false);
-                },
-                style: ElevatedButton.styleFrom(
-                  shadowColor: Colors.black,
-                  primary: Colors.black,
-                  onPrimary: Colors.red,
-                  textStyle: TextStyle(
-                    fontSize: 15.0,
-                  ),
-                ),
-                  child: Text(
-                    "Don't, Have an Account? SignUp here.",
-                  ),
-              ),
-
             ],
           ),
         ),

@@ -58,38 +58,38 @@ class _MainScreenState extends State<MainScreen> with SingleTickerProviderStateM
           DrawerTabPage(),
         ],
       ),
+
       bottomNavigationBar: BottomNavigationBar(
         backgroundColor: Colors.black,
+        showSelectedLabels: false,
 
         items: <BottomNavigationBarItem>[
 
           BottomNavigationBarItem(
-            icon: Icon(Icons.home, size: 35.0,),
-            label: "Home",
+            icon: Icon(Icons.home, size: 33.0,),
+            label: "something",
           ),
-
           BottomNavigationBarItem(
-            icon: Icon(Icons.star,size: 35.0,),
+            icon: Icon(Icons.star,size: 33.0,),
             label: "Ratings",
           ),
-
           BottomNavigationBarItem(
-            icon: Icon(Icons.bookmark, size: 35.0,),
+            icon: Icon(Icons.bookmark, size: 33.0,),
             label: "Bookmarks",
           ),
 
           BottomNavigationBarItem(
-            icon: Icon(Icons.menu, size: 35.0,),
+            icon: Icon(Icons.menu, size: 33.0,),
             label: "Drawer",
           ),
-
         ],
+
 
         unselectedItemColor: Colors.grey,
         selectedItemColor: Colors.red,
         type: BottomNavigationBarType.fixed,
         selectedLabelStyle: TextStyle(fontSize: 11.0),
-        showUnselectedLabels: true,
+        showUnselectedLabels: false,
         currentIndex: selectedIndex,
         onTap: onItemClicked,
 
